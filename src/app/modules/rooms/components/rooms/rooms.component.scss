@@ -1,0 +1,32 @@
+.card {
+    position: relative;
+    
+
+    height: 400px;
+    margin: 57px 0px;   
+    
+}
+
+img {
+    width: 330px;
+    height: 330px;
+}
+
+button {
+    position: relative;
+    bottom: 2px;
+    width: 330px;
+    height: 70px;
+
+    background-color: var(--blue);
+    color: var(--white);
+
+    border: none;
+
+    &:hover {
+        color: var(--yellow);
+    }
+}
+
+
+
