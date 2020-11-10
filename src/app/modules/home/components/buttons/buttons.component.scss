@@ -1,0 +1,19 @@
+div {
+    margin-top: 62px;
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    width: 327px;
+    height: 48px;
+    background-color: var(--blue);
+    color: var(--white);
+    border: none;
+
+    &:hover {
+
+        color: var(--yellow);
+    }
+}
+
