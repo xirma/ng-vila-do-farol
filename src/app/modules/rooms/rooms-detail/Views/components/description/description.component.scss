@@ -1,0 +1,44 @@
+.description-container {
+    position: relative;
+    top: 60px;
+
+    width: 260px;
+    height: 470px;
+    text-align: center;
+}
+
+h1 {
+    position: relative;
+    bottom: 20px;
+}
+
+div > div {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+
+    max-width: 260px;
+    height: 100px;
+
+    top: 30px;
+    left: 25px;
+}
+
+
+
+button {
+    position: relative;
+    height: 50px;
+    width: 50px;
+
+    margin: 10px 10px;
+    border: none;
+
+    background-color: var(--light-blue);
+
+    &:hover{
+        color: var(--yellow);
+    }
+    
+}
+
