@@ -1,0 +1,34 @@
+<form [formGroup]="form" (submit)="submit()">
+
+    <label for="rooms">Qual o tipo de Apartamento</label>
+    <select name="rooms" class="rooms" formControlName="roomType" (change)="changeRooms($event)">
+        <option value="" disabled>Escolha uma opção</option>
+        <option *ngFor="let room of Rooms" [value]="room">{{ room }}</option>    
+    </select>
+
+    <label for="adults">Número de Adultos</label>
+    <select name="Adults" class="adults" formControlName="numberAdults" (change)="changeAdults($event)">
+        <option value="" disabled>Escolha uma opção</option>
+        <option *ngFor="let adults of Adults" [value]="adults">{{ adults }}</option>
+    </select>
+
+    <label for="children">Número de Crianças</label>
+    <select name="children" id="children" formControlName="numberChildren" (change)="changeChildren($event)">
+        <option value="" disabled> Escolha uma opção </option>
+        <option *ngFor="let children of Children" [value]="children">{{ children }}</option>
+    </select>
+
+    <label for="view">
+        Vista para o mar 
+        <input type="checkbox" name="view" id="view" formControlName="oceanView">
+    </label>
+    
+
+    <label for="cafe">
+        Café da manhã
+        <input type="checkbox" name="cafe" id="cafe" formControlName="breakfest">
+    </label>
+
+    <button type="submit" [disabled]="!form.valid">Reservar</button>
+    
+</form>
