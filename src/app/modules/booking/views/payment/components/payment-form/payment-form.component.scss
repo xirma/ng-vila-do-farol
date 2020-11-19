@@ -1,0 +1,52 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+
+    background-color: var(--light-blue);
+    width: 341px; 
+    height: 600px;
+}
+
+label {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: var(--blue);
+
+    &:first-child { 
+        margin-top: 15px;
+    }
+}
+
+input {
+
+    margin-bottom: 15px;
+    border-color: var(--light-blue);
+
+    &:hover {
+        border-color: var(--yellow);
+    }
+}
+
+select {
+    margin-bottom: 15px;
+    border-color: var(--light-blue);
+
+    &:hover {
+        border-color: var(--yellow);
+    }
+}
+
+
+button {
+    width: 197px;
+    height: 30px;
+    background-color: var(--blue);
+    color: var(--white);
+    border: none;
+
+    &:hover {
+
+        color: var(--yellow);
+    }
+}

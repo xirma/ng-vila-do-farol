@@ -9,7 +9,15 @@ import { HomeModule } from './modules/home/home.module';
 import { RoomsModule } from './modules/rooms/rooms.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
+
+
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+]);
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeModule,
     RoomsModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FullCalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
