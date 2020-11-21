@@ -1,24 +1,27 @@
 <form [formGroup]="paymentForm" >
-    <div formGroupName="creditCardInfo">
+
+    <label class="group" for="creditCardInfo">Informações do Cartão de crédito</label>
+    <div name="creditCardInfo" formGroupName="creditCardInfo">
         <label for="creditCard">Número do Cartão de Crédito</label>
         <input id="ccn" type="tel" name="creditCard" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" formControlName="creditCard">
 
         <label for="cardName">Nome impresso no cartão</label>
-        <input name ="cardName" type="text" formControlName="cardName">
+        <input name ="cardName" type="text" formControlName="cardName" placeholder="titular do cartão">
 
         <label for="expireDate">Data de Validade</label>
         <input name="expireDate" type="date" formControlName="expireDate">
 
         <label for="cvv">CVV</label>
-        <input name="cvv" type="number" maxlength="3">
+        <input name="cvv" type="number" maxlength="3" placeholder="CVV">
     </div>
 
-    <div formGroupName="billingInfo">
+    <label  class="group" for="billingInfo">Informações de faturamento</label>
+    <div name="billingInfo" formGroupName="billingInfo">
         <label for="fullname">Nome Completo</label>
-        <input type="text" name="fullName" formControlName="fullName">
+        <input type="text" name="fullName" formControlName="fullName" placeholder="nome completo">
 
         <label for="adress">Endereço</label>
-        <input type="text" name="adress" formControlName="adress">
+        <input type="text" name="adress" formControlName="adress" placeholder="endereço de faturamento">
 
         <label for="city">Cidade</label>
         <select name="city" id="children" formControlName="city" (change)="changeCity($event)">
@@ -35,4 +38,6 @@
             <option *ngFor="let country of Countries" [value]="country">{{country}}</option>
         </select>
     </div>
+
+    <button type="submit">Submeter</button>
 </form>

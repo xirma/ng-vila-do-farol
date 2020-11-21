@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
       <app-payment-form></app-payment-form>
     </div>
   `,
-  styles: [
-  ]
+  styles: [`
+    div {
+      display: flex;
+      flex-direction: row;}
+  `]
 })
 export class PaymentFormContainerComponent implements OnInit {
 
