@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-rooms-container',
-  templateUrl: './rooms-container.component.html',
-  styleUrls: ['./rooms-container.component.scss']
+  template: `
+  <app-rooms></app-rooms>
+  <app-buttom></app-buttom>
+  `,
+  styles: [
+  ]
 })
 export class RoomsContainerComponent implements OnInit {
 
