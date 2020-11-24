@@ -13,12 +13,6 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
 
-
-
-
-
-
-
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
 ]);

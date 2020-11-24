@@ -2,42 +2,42 @@
 
     <label class="group" for="creditCardInfo">Informações do Cartão de crédito</label>
     <div name="creditCardInfo" formGroupName="creditCardInfo">
-        <label for="creditCard">Número do Cartão de Crédito</label>
+        <h3>Número do Cartão de Crédito</h3>
         <input id="ccn" type="tel" name="creditCard" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" formControlName="creditCard">
 
-        <label for="cardName">Nome impresso no cartão</label>
+        <h3>Nome impresso no cartão</h3>
         <input name ="cardName" type="text" formControlName="cardName" placeholder="titular do cartão">
 
-        <label for="expireDate">Data de Validade</label>
+        <h3>Data de Validade</h3>
         <input name="expireDate" type="date" formControlName="expireDate">
 
-        <label for="cvv">CVV</label>
+        <h3>CVV</h3>
         <input name="cvv" type="number" maxlength="3" placeholder="CVV">
     </div>
 
     <label  class="group" for="billingInfo">Informações de faturamento</label>
     <div name="billingInfo" formGroupName="billingInfo">
-        <label for="fullname">Nome Completo</label>
+        <h3>Nome Completo</h3>
         <input type="text" name="fullName" formControlName="fullName" placeholder="nome completo">
 
-        <label for="adress">Endereço</label>
+        <h3>Endereço</h3>
         <input type="text" name="adress" formControlName="adress" placeholder="endereço de faturamento">
 
-        <label for="city">Cidade</label>
+        <h3>Cidade</h3>
         <select name="city" id="children" formControlName="city" (change)="changeCity($event)">
             <option value="" disabled>Escolha uma opção</option>
             <option *ngFor="let city of Cities" [value]="city">{{city}}</option>
         </select>
 
-        <label for="postalCode">Código Postal</label>
+        <h3>Código Postal</h3>
         <input type="text" OnlyNumber id="number" name="postalCode" placeholder="Insira o código postal" formControlName="postalCode" maxlength="6" class="a-textbox" />  
 
-        <label for="country">Pais</label>
+        <h3>País</h3>
         <select name="country" id="contry" formControlName="country" (change)="changeCountry($event)">
             <option value="" disabled>Escolha uma opção</option>
             <option *ngFor="let country of Countries" [value]="country">{{country}}</option>
         </select>
     </div>
 
-    <button type="submit">Submeter</button>
+    <button type="submit" routerLink="/reservas/confirmacao">Submeter</button>
 </form>

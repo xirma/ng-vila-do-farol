@@ -1,3 +1,26 @@
-<div>
-    <p>works</p>
+<div class="main-div">
+    <h2>Detalhes da reserva</h2>
+    <h3>{{checkinDate}} à {{checkoutDate}}</h3>
+
+    <div class="secondary-div space-around">
+        <div class="section">
+            <h3 class="h3"> Tipo de apartamento</h3>
+            <span class="span">{{roomType}}</span>
+        </div>
+
+        <div class="section">
+            <h3 class="h3"> Número de Adultos</h3>
+            <span class="span">{{numberAdults}}</span>
+        </div>
+
+        <div class="section">
+            <h3 class="h3"> Número de Crianças</h3>
+            <span class="span">{{numberChildren}}</span>
+        </div>
+    </div>    
+
+    <span class="span">{{oceanView}}</span>
+    <span class="span">{{breakfast}}</span>
+    
+    <h3>Total = R$ {{total}}</h3>
 </div>

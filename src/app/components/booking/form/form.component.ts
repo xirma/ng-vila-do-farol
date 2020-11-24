@@ -18,7 +18,7 @@ export class FormComponent implements OnInit {
     numberAdults: [null, Validators.required] ,
     numberChildren: [null, Validators.required],
     oceanView: [null],
-    breakfest: [null]
+    breakfast: [null]
   }, Validators.required);
 
   ngOnInit(): void {

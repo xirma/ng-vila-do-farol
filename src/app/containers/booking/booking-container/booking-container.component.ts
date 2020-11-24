@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-booking-container',
   template: `
-   <route-outlet></route-outlet>
+   <router-outlet></router-outlet>
   `,
   styles: [
   ]
