@@ -11,7 +11,7 @@ import { FormComponent } from 'src/app/components/booking/form/form.component';
 import { CalendarComponent } from 'src/app/components/booking/calendar/calendar.component';
 
 
-import { PaymentFormContainerComponent } from '../containers/payment/payment-form-container.component';
+import { PaymentFormContainerComponent } from 'src/app/containers/booking/payment-container/payment-form-container.component';
 import { PaymentFormComponent } from 'src/app/components/payment/payment-form/payment-form.component';
 import { BookingDetailsComponent } from 'src/app/components/payment/booking-details/booking-details.component';
 

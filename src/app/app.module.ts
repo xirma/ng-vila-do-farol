@@ -13,6 +13,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
 
+
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
 ]);
@@ -29,7 +30,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     RoomsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FullCalendarModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

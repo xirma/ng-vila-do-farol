@@ -20,6 +20,9 @@
         <h3>Nome Completo</h3>
         <input type="text" name="fullName" formControlName="fullName" placeholder="nome completo">
 
+        <h3>E-mail</h3>
+        <input type="email" formControlName="email">
+
         <h3>Endereço</h3>
         <input type="text" name="adress" formControlName="adress" placeholder="endereço de faturamento">
 
@@ -41,3 +44,10 @@
 
     <button type="submit" routerLink="/reservas/confirmacao">Submeter</button>
 </form>
+
+
+<!-- <div *ngIf="(this.paymentForm.email && this.paymentForm.email)">
+    <small *ngIf="this.paymentForm.email.errors?.required" class="text-danger">Primary email is required</small>
+    
+    <small *ngIf="this.paymentForm.email.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+</div> -->

@@ -62,13 +62,6 @@ p {
 	height: auto;
 }
 
-.img-fluid {
-	/*imagens aparecem inteiras dentro do elemento pai sem cortes na imagem*/
-	/*img responsive - fica com o width do elemento pai e a altura automatica*/
-	max-width: 100%;
-	height: auto;
-}
-
 .center-txt {
 	text-align: center;
 }
@@ -101,4 +94,12 @@ p {
 .col-2-50 {
 	position: relative;
 	flex: 1 40%;
+}
+
+/* ---------------------------------- */
+/* --------- warning  --------------- */
+/* ---------------------------------- */
+
+.text-danger {
+	border-color: red;
 }

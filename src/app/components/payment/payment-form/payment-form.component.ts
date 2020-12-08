@@ -21,6 +21,7 @@ export class PaymentFormComponent implements OnInit {
     }),
     billingInfo: this.fb.group ({
       fullName: [null, Validators.minLength(10)],
+      email: [null, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')],
       adress: [null, Validators.minLength(5)],
       city: [null],
       zipCode: [null],

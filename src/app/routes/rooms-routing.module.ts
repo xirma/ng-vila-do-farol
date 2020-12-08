@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { RoomsContainerComponent } from 'src/app/containers/rooms/rooms-container/rooms-container.component';
-import { Quarto1ContainerComponent } from 'src/app/containers/rooms-detail/quarto1-container/quarto1-container.component';
-import { Quarto2ContainerComponent } from 'src/app/containers/rooms-detail/quarto2-container/quarto2-container.component';
-import { Quarto3ContainerComponent } from 'src/app/containers/rooms-detail/quarto3-container/quarto3-container.component';
-import { QuartoAdpContainerComponent } from 'src/app/containers/rooms-detail/quarto-adp-container/quarto-adp-container.component';
+import { Quarto1ContainerComponent } from 'src/app/containers/rooms/quarto1-container/quarto1-container.component';
+import { Quarto2ContainerComponent } from 'src/app/containers/rooms/quarto2-container/quarto2-container.component';
+import { Quarto3ContainerComponent } from 'src/app/containers/rooms/quarto3-container/quarto3-container.component';
+import { QuartoAdpContainerComponent } from 'src/app/containers/rooms/quarto-adp-container/quarto-adp-container.component';
 
 
 

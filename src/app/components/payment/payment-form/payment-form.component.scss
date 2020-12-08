@@ -2,9 +2,9 @@ form {
     background-color: var(--light-blue);
 
     width: 400px;
-    height: 700px;
+    height: 754px;
 
-    padding-top: 15px;
+    padding: 15px;
 }
 
 div {
@@ -29,6 +29,7 @@ h3 {
 }
 
 select {
+    min-width: 200px;
     margin-bottom: 15px;
     border: none;
 
@@ -38,6 +39,8 @@ select {
 }
 
 input {
+    min-width: 200px;
+
     margin-bottom: 15px;
     border: none;
 
