@@ -14,6 +14,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 
 
 
+
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
 ]);

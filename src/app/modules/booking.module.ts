@@ -16,6 +16,8 @@ import { PaymentFormComponent } from 'src/app/components/payment/payment-form/pa
 import { BookingDetailsComponent } from 'src/app/components/payment/booking-details/booking-details.component';
 
 import { BookingConfirmContainerComponent } from '../containers/booking/booking-confirm-container/booking-confirm-container.component';
+import { DetailsComponent } from 'src/app/components/booking-confirm/details/details.component';
+import { HotelSliderComponent } from 'src/app/components/booking-confirm/hotel-slider/hotel-slider.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { BookingConfirmContainerComponent } from '../containers/booking/booking-
     PaymentFormContainerComponent,
     PaymentFormComponent,
     BookingDetailsComponent,
-    BookingConfirmContainerComponent
+    BookingConfirmContainerComponent,
+    DetailsComponent,
+    HotelSliderComponent
   ],
   imports: [
     CommonModule,

@@ -3,10 +3,17 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-booking-confirm-container',
   template: `
-    <p>Works</p>
+    <div class="space-around"> 
+      <app-hotel-slider></app-hotel-slider>
+      <app-details></app-details>
+    </div>
   `,
-  styles: [
-  ]
+  styles: [`
+    div {
+    display: flex;
+    flex-direction: row;
+  }
+  `]
 })
 export class BookingConfirmContainerComponent implements OnInit {
 
