@@ -1,7 +1,7 @@
-<form [formGroup]="paymentForm" >
+<form [formGroup]="paymentForm" (submit)="submit()">
 
-    <label class="group" for="creditCardInfo">Informações do Cartão de crédito</label>
-    <div name="creditCardInfo" formGroupName="creditCardInfo">
+    <!-- <label class="group" for="creditCardInfo">Informações do Cartão de crédito</label>
+    <div name="creditCardInfo" formGroupName="creditCardInfo"> -->
         <h3>Número do Cartão de Crédito</h3>
         <input id="ccn" type="tel" name="creditCard" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" formControlName="creditCard">
 
@@ -13,10 +13,10 @@
 
         <h3>CVV</h3>
         <input name="cvv" type="number" maxlength="3" placeholder="CVV">
-    </div>
+    <!-- </div> -->
 
-    <label  class="group" for="billingInfo">Informações de faturamento</label>
-    <div name="billingInfo" formGroupName="billingInfo">
+    <!-- <label  class="group" for="billingInfo">Informações de faturamento</label>
+    <div name="billingInfo" formGroupName="billingInfo"> -->
         <h3>Nome Completo</h3>
         <input type="text" name="fullName" formControlName="fullName" placeholder="nome completo">
 
@@ -40,9 +40,9 @@
             <option value="" disabled>Escolha uma opção</option>
             <option *ngFor="let country of Countries" [value]="country">{{country}}</option>
         </select>
-    </div>
+    <!-- </div> -->
 
-    <button type="submit" routerLink="/reservas/confirmacao">Submeter</button>
+    <button type="submit">Submeter</button>
 </form>
 
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/app/main.service';
 
 @Component({
   selector: 'app-booking-details',
@@ -7,18 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookingDetailsComponent implements OnInit {
 
-  checkinDate = '16/02/2020';
-  checkoutDate = '01/03/2020';
-  roomType = 'apartamento 1 quarto';
-  numberAdults = '2 adultos';
-  numberChildren = 'sem crianças';
-  oceanView = 'Vista para o mar';
-  breakfast = 'Café da manhã incluso';
+  checkinDate = '16/04/2021';
+  checkoutDate = '17/05/2021';
+  roomType: string;
+  numberAdults: string;
+  numberChildren: string;
+  oceanView: boolean;
+  breakfast: boolean;
   total = '5.500,00';
 
-  constructor() { }
+  form;
+
+  constructor(
+    private service: MainService
+  ) { }
 
   ngOnInit(): void {
+    // this.service.numberAdults.subscribe(numberAdults => this.service.numberAdults = this.numberAdults);
+    this.service.sharedForm.subscribe(form => this.form = form);
+
+    this.roomType = this.form['roomType'];
+    this.numberAdults = this.form['numberAdults'];
+    this.numberChildren = this.form['numberChildren'];
+    this.oceanView = this.form['oceanView'];
+    this.breakfast = this.form['breakfast']
+
+
+    console.log(this.breakfast);
   }
 
 }

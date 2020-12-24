@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-rooms',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoomsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
+  firstRoute(): void {
+    this.router.navigate(['/acomodacoes/quarto-1']);
+  }
+
+  secondRoute(): void {
+    this.router.navigate(['/acomodacoes/quarto-2']);
+  }
+
+  thirdRoute(): void {
+    this.router.navigate(['/acomodacoes/quarto-3']);
+  }
+
+  fourthRoute(): void{
+    this.router.navigate(['/acomodacoes/quarto-adp']);
+  }
+
+  fithRoute(): void {
+    this.router.navigate(['/reservas']);
+  }
 }

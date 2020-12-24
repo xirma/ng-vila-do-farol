@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-rooms-container',
   template: `
   <app-rooms></app-rooms>
-  <app-buttom></app-buttom>
+  
   `,
   styles: [
   ]

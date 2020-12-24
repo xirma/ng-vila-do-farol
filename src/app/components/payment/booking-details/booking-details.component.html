@@ -19,8 +19,9 @@
         </div>
     </div>    
 
-    <span class="span">{{oceanView}}</span>
-    <span class="span">{{breakfast}}</span>
+    <span class="span" *ngIf="oceanView"> Vista para o mar </span>
+    <span class="span" *ngIf="breakfast"> Café da manhã </span>
     
     <h3>Total = R$ {{total}}</h3>
+
 </div>

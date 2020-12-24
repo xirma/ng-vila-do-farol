@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RoomsComponent } from 'src/app/components/rooms/rooms/rooms.component';
 import { RoomsContainerComponent } from 'src/app/containers/rooms/rooms-container/rooms-container.component';
-import { ButtomComponent } from 'src/app/components/rooms/buttom/buttom.component';
 import { RouterModule } from '@angular/router';
 import { RoomsRoutingModule } from '../routes/rooms-routing.module';
 
@@ -21,7 +20,6 @@ import { Quarto1ContainerComponent } from 'src/app/containers/rooms/quarto1-cont
   declarations: [
     RoomsComponent,
     RoomsContainerComponent,
-    ButtomComponent,
     RoomsDetailContainerComponent,
     Quarto1ContainerComponent,
     DescriptionComponent,
@@ -35,6 +33,6 @@ import { Quarto1ContainerComponent } from 'src/app/containers/rooms/quarto1-cont
     RouterModule,
     RoomsRoutingModule
   ],
-  exports: [RoomsComponent, RoomsContainerComponent, ButtomComponent]
+  exports: [RoomsComponent, RoomsContainerComponent]
 })
 export class RoomsModule { }

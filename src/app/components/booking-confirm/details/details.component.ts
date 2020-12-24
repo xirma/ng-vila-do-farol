@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/app/main.service';
 
 @Component({
   selector: 'app-details',
@@ -7,12 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsComponent implements OnInit {
 
-  name = 'Felipe Pacheco Schürmann';
-  email = 'felipe_pschurmann@hotmail.com';
+  form;
+  paymentForm;
 
-  constructor() { }
+  name: string;
+  email: string;
+
+  constructor(
+    private service: MainService
+  ) { }
 
   ngOnInit(): void {
+
+    this.service.sharedPaymentForm.subscribe(paymentForm => this.paymentForm = paymentForm);
+    this.name = this.paymentForm['fullName'];
+    this.email = this.paymentForm['email'];
+
   }
 
 }

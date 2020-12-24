@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buttons',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  firstRoute(): void {
+    this.router.navigate(['/acomodacoes']);
+  }
+
+  secondRoute(): void {
+    this.router.navigate(['/reservas']);
   }
 
 }
