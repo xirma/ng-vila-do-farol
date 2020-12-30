@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CalendarOptions } from '@fullcalendar/angular';
+import { Component, forwardRef, OnInit, ViewChild } from '@angular/core';
+
+import { Calendar, CalendarOptions, FullCalendarComponent, FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+
+
 
 @Component({
   selector: 'app-calendar',
@@ -8,13 +13,27 @@ import { CalendarOptions } from '@fullcalendar/angular';
 })
 export class CalendarComponent implements OnInit {
 
-  calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth'
-  };
+  calendarOptions: CalendarOptions;
+  @ViewChild('fullcalendar') fullcalendar: FullCalendarComponent;
+
 
   constructor() { }
 
   ngOnInit(): void {
+    forwardRef(() => Calendar);
+
+    this.calendarOptions ={
+      plugins: [ interactionPlugin, dayGridPlugin ],
+      initialView: 'dayGridMonth',
+      selectable: true,
+      eventDragStop: this.handleEventDragStop.bind(this)
+    };
+
   }
 
+  handleEventDragStop(arg): void {
+    console.log(arg);
+  }
+
+  
 }
