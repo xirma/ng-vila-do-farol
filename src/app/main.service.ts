@@ -75,7 +75,6 @@ export class MainService {
     let people = 0;
 
     let breakfastPrice = 0;
-    let Nights = nights;
 
     switch (roomType) {
       case 'Apartamento 1 Quarto': roomPrice = 1000; break;
@@ -124,7 +123,7 @@ export class MainService {
 
     people = adults + children;
 
-    const total = ( roomPrice + childrenPrice + (breakfastPrice * people)) * Nights;
+    const total = ( roomPrice + childrenPrice + (breakfastPrice * people)) * nights;
 
     this.total.next(total);
   }

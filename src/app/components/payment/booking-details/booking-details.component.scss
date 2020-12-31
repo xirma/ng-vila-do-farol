@@ -9,7 +9,6 @@
     padding: 15px;
 
     border: 1px solid var(--blue);
-
     background-color: var(--light-blue);
 }
 
@@ -18,8 +17,6 @@
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
-
-
     padding: 10px;   
 }
 
@@ -27,13 +24,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
     width: 400px;
-
     margin-bottom: 10px;
-
-
-    
+  
     &>span {     
         flex: 1 50%;
         justify-content: flex-end;
@@ -59,7 +52,9 @@ h3, span  {
         display: flex;
         color: var(--black);
         justify-content: flex-end;
-        margin-right: 20px;
+        &:nth-child(-n+3) {
+            margin-right: 20px;
+        }
     }
 
     &.h3{
@@ -67,4 +62,50 @@ h3, span  {
         justify-content: flex-start;
         margin-left: 20px;
     }
+}
+
+// --------------------------
+// --------------------------
+// -------MEDIA QUERIES------
+// --------------------------
+// --------------------------
+
+@media	screen and (max-width: 768px) {
+    .main-div, .secondary-div{
+        
+        height: 350px;
+        width: 300px;
+    }
+
+
+
+    .section {
+        display: flex;
+        flex-direction: column;
+        
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+
+
+    
+        
+      
+        &>span {     
+            flex: 1 100%;
+            justify-content: flex-end;
+            &.span{
+                margin-right: 0;
+            }
+        }
+    
+        &>h3 {       
+            flex: 1 100%;
+            justify-content: flex-start;
+            &.h3{
+                margin-left: 0;
+            }
+        }
+    }
+
 }

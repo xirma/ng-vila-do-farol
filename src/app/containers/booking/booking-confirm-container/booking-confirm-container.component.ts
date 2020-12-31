@@ -13,6 +13,13 @@ import { Component, OnInit } from '@angular/core';
     display: flex;
     flex-direction: row;
   }
+
+   @media	screen and (max-width: 768px) {
+     div {
+       flex-direction: column;
+       align-items: center;
+     }
+}
   `]
 })
 export class BookingConfirmContainerComponent implements OnInit {

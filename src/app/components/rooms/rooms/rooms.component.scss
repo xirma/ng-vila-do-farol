@@ -36,19 +36,49 @@ button {
 
     &>button {
         position: relative;
-    
+        width: 327px;
+        height: 48px;
+        background-color: var(--blue);
+        color: var(--white);
+        border: none;
 
-    width: 327px;
-    height: 48px;
-    background-color: var(--blue);
-    color: var(--white);
-    border: none;
+            &:hover {
 
-        &:hover {
-
-            color: var(--yellow);
-        }
+                color: var(--yellow);
+            }
     }
 }
 
 
+
+@media	screen and (max-width: 768px) {
+    img {
+        width: 440px;
+        height: 440px;
+    }
+
+    button {
+        width: 440px;
+    }
+
+    .flex-container {
+        flex-flow: column;
+        align-items: center;
+        
+        justify-content: space-around;
+
+    }
+
+    .card {
+        position: relative;
+        width: 440px;
+    }
+
+    .button-div{
+        width: 768px;
+    }
+
+
+
+    
+}

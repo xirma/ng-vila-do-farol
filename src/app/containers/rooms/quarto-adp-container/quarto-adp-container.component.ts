@@ -8,11 +8,7 @@ import { Component, OnInit } from '@angular/core';
       <app-slider [src]="src"></app-slider>
     </div>
   `,
-  styles: [`
-  div {
-    height: 446px;
-}
-`]
+  styles: []
 })
 export class QuartoAdpContainerComponent implements OnInit {
 

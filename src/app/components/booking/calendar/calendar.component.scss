@@ -1,8 +1,16 @@
-div {
-    width: 412px; 
-}
+
 
 full-calendar {
     height: 350px;
-
+    width: 412px;
 }
+
+
+@media	screen and (max-width: 768px) {
+    full-calendar {
+        height: 300px;
+        width: 300px;
+    }
+}
+
+

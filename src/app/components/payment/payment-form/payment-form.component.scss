@@ -2,9 +2,9 @@ form {
     background-color: var(--light-blue);
 
     width: 400px;
-    height: 754px;
+    height: 710px;
 
-    padding: 15px;
+    padding: 30px;
 }
 
 div {
@@ -61,4 +61,19 @@ button {
 
         color: var(--yellow);
     }
+}
+
+
+// --------------------------
+// --------------------------
+// -------MEDIA QUERIES------
+// --------------------------
+// --------------------------
+
+@media	screen and (max-width: 768px) { 
+
+    form {
+        width: 350px;
+    }
+
 }

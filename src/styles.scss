@@ -49,6 +49,12 @@ p {
 	font-weight: 300;
 }
 
+.container {	
+	display: block;
+	width: 1024px;
+	margin: 0 auto;
+}
+
 .img-cover {
 	/*img com o tamanho do elemento pai sem distorção*/
 	width: 100%;
@@ -76,12 +82,6 @@ p {
 	text-align: center;
 }
 
-.container {	
-	display: block;
-	width: 1024px;
-	margin: 0 auto;
-}
-
 
 /* ---------------------------------- */
 /* --------- flex columns ----------- */
@@ -97,11 +97,18 @@ p {
 	flex: 1 40%;
 }
 
+
+
 /* ---------------------------------- */
-/* --------- warning  --------------- */
+/* --------- MEDIA QUERIES ---------- */
 /* ---------------------------------- */
 
-.text-danger {
-	border-color: red;
+@media	screen and (max-width: 768px) {
+
+	.container {
+		display: block;
+		max-width: 768px;
+		margin: 0 auto;
+	}
+
 }
-
