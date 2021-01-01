@@ -36,18 +36,10 @@ export class MainService {
   }
 
   setNights(checkIn, checkOut): void {
-    const ci = checkIn.split('-');
-    const co = checkOut.split('-');
 
-    const checkInYear = ci[0];
-    const checkOutYear = co[0];
-    const checkInMonth = ci[1];
-    const checkOutMonth = co[1];
-    const checkInDay = ci[2];
-    const checkOutDay = co[2];
+    const dateCI = new Date(checkIn);
+    const dateCO = new Date(checkOut);
 
-    const dateCI = new Date(checkInYear, checkInMonth, checkInDay);
-    const dateCO = new Date(checkOutYear, checkOutMonth, checkOutDay);
     const timeCI = dateCI.getTime();
     const timeCO = dateCO.getTime();
 
@@ -56,7 +48,7 @@ export class MainService {
     this.setTotal(nights);
   }
 
-  setTotal(nights) {
+  setTotal(nights): void {
 
     let Form: object;
     this.sharedForm.subscribe(paymentForm => Form = paymentForm);
