@@ -39,20 +39,14 @@ export class MainService {
     const ci = checkIn.split('-');
     const co = checkOut.split('-');
 
-    const checkInYear = ci[0];
-    const checkOutYear = co[0];
-    const checkInMonth = ci[1];
-    const checkOutMonth = co[1];
-    const checkInDay = ci[2];
-    const checkOutDay = co[2];
-
-    const dateCI = new Date(checkInYear, checkInMonth, checkInDay);
-    const dateCO = new Date(checkOutYear, checkOutMonth, checkOutDay);
+    const dateCI = new Date(ci[0], ci[1], ci[2]);
+    const dateCO = new Date(co[0], co[1], co[2]);
     const timeCI = dateCI.getTime();
     const timeCO = dateCO.getTime();
 
     const nights =  (timeCO - timeCI) / 1000 / 60 / 60 / 24 ;
 
+    console.log(nights);
     this.setTotal(nights);
   }
 

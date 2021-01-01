@@ -1,10 +1,10 @@
 <form [formGroup]="form" (submit)="submit()">
 
     <label for="checkIn">Data de entrada</label>
-    <input type="date" name="checkIn" formControlName="checkIn" >
+    <input type="date" name="checkIn" formControlName="checkIn" min="{{today}}" (change)="setMinCheckOutDate($event)">
 
     <label for="checkOut">Data de saída</label>
-    <input type="date" name="checkOut" formControlName="checkOut">
+    <input type="date" name="checkOut" formControlName="checkOut" min="{{minCheckOut}}">
 
     <label for="rooms">Qual o tipo de Apartamento</label>
     <select name="rooms" class="rooms" formControlName="roomType" (change)="changeRooms($event)">
