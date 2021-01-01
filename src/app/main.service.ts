@@ -45,6 +45,7 @@ export class MainService {
 
     const nights =  (timeCO - timeCI) / 1000 / 60 / 60 / 24 ;
 
+    console.log(nights);
     this.setTotal(nights);
   }
 
