@@ -1,7 +1,8 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { buildEventRangeKey } from '@fullcalendar/angular';
+import { BehaviorSubject } from 'rxjs';
 import { MainService } from 'src/app/main.service';
 
 
@@ -12,14 +13,19 @@ import { MainService } from 'src/app/main.service';
 })
 export class FormComponent implements OnInit {
 
-  Rooms: any = ['Apartamento 1 Quarto', 'Apartamento 2 Quartos', 'Apartamento 3 Quartos', 'Apartamento Adaptado'];
-  Adults: any = ['1 Adulto', '2 Adultos', '3 Adultos', '4 Adultos', '5 Adultos', '6 Adultos'];
-  Children: any = ['Sem crianças', '1 Criança', '2 Crianças', '3 Crianças', '4 Crianças', '5 Crianças', '6 Crianças'];
+  Rooms: string[] = ['Apartamento 1 Quarto', 'Apartamento 2 Quartos', 'Apartamento 3 Quartos', 'Apartamento Adaptado'];
+
+  adults = new BehaviorSubject([]);
+  sharedAdults = this.adults.asObservable();
+  Adults: string[];
+
+  Children: string[] = ['Sem crianças', '1 Criança', '2 Crianças', '3 Crianças', '4 Crianças', '5 Crianças', '6 Crianças'];
 
   minCheckOutDate = new BehaviorSubject('');
   sharedMinCheckOutDate = this.minCheckOutDate.asObservable();
-  today: string;
   minCheckOut: string;
+
+  today: string;
 
   form: FormGroup = this.fb.group ({
     checkIn: [null, Validators.required],
@@ -34,6 +40,7 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.today = this.getToday();
     this.sharedMinCheckOutDate.subscribe(date => this.minCheckOut = date);
+    this.sharedAdults.subscribe(adults => this.Adults = adults);
   }
 
   constructor(
@@ -42,14 +49,16 @@ export class FormComponent implements OnInit {
     private router: Router
   ) {}
 
-  changeAdults(e): void {
-    this.form.get('numberAdults').setValue(e.target.value, {
-      onlySelf: true
-    });
-  }
-
   changeRooms(e): void {
     this.form.get('roomType').setValue(e.target.value, {
+      onlySelf: true
+    });
+
+    this.adultsFilter(e.target.value);
+  }
+
+  changeAdults(e): void {
+    this.form.get('numberAdults').setValue(e.target.value, {
       onlySelf: true
     });
   }
@@ -102,6 +111,23 @@ export class FormComponent implements OnInit {
     }
 
     return today = `${yyyy}-${mm}-${dd}`;
+  }
+
+  adultsFilter(roomType: string): void {
+    switch (roomType) {
+      case 'Apartamento 1 Quarto':
+        this.adults.next(['1 Adulto', '2 Adultos']);
+        break;
+      case 'Apartamento 2 Quartos':
+        this.adults.next(['1 Adulto', '2 Adultos', '3 Adultos', '4 Adultos']);
+        break;
+      case 'Apartamento 3 Quartos':
+        this.adults.next(['1 Adulto', '2 Adultos', '3 Adultos', '4 Adultos', '5 Adultos', '6 Adultos']);
+        break;
+      case 'Apartamento Adaptado':
+        this.adults.next(['1 Adulto', '2 Adultos']);
+        break;
+    }
   }
 
   submit(): boolean {

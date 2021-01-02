@@ -35,7 +35,7 @@
         <input type="checkbox" name="cafe" id="cafe" formControlName="breakfast">
     </label>
 
-    <button type="submit">Reservar</button>
+    <button type="submit" [disabled]="!form.valid">Reservar</button>
     
 </form>
 
