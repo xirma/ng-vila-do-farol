@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { RoomsRoutingModule } from './routes/rooms-routing.module';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +22,16 @@ export class MainService {
   public total = new BehaviorSubject({});
   public sharedTotal = this.total.asObservable();
 
-
   public nights: number;
+
+  public minCheckOutDate = new BehaviorSubject('');
+  public sharedMinCheckOutDate = this.minCheckOutDate.asObservable();
+
+  public startDateValue = new BehaviorSubject('');
+  public sharedStartDateValue = this.startDateValue.asObservable();
+
+  public endDateValue = new BehaviorSubject('');
+  public sharedEndDateValue = this.endDateValue.asObservable();
 
   setForm(form): void  {
     this.form.next(form);
@@ -34,6 +41,50 @@ export class MainService {
   setPaymentForm(paymentForm): void {
     this.paymentForm.next(paymentForm);
   }
+
+  getToday(): string{
+    let today: any = new Date();
+    let dd: any = today.getDate();
+    let mm: any = today.getMonth() + 1;
+    const yyyy = today.getFullYear();
+
+    if (dd < 10){
+      dd = `0${dd}`;
+    }
+
+    if (mm < 10) {
+      mm = `0${mm}`;
+    }
+
+    return today = `${yyyy}-${mm}-${dd}`;
+  }
+
+  setMinCheckOutDate(checkInDate): void {
+    const day = 87264000;
+
+    const ciDate = new Date (checkInDate);
+    const ciTime = ciDate.getTime();
+
+    const minCheckOutTime = ciTime + day;
+    const minCheckOutDate = new Date(minCheckOutTime);
+
+    let dd: any = minCheckOutDate.getDate();
+    let mm: any = minCheckOutDate.getMonth() + 1;
+    const yyyy = minCheckOutDate.getFullYear();
+
+    if (dd < 10) {
+      dd = `0${dd}`;
+    }
+
+    if (mm < 10) {
+      mm = `0${mm}`;
+    }
+
+    const minCheckOut = `${yyyy}-${mm}-${dd}`;
+
+    this.minCheckOutDate.next(minCheckOut);
+  }
+
 
   setNights(checkIn, checkOut): void {
 
@@ -126,4 +177,3 @@ export class MainService {
 
 }
 
-  

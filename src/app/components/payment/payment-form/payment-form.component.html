@@ -30,7 +30,7 @@
                    [class.is-invalid] = "paymentForm.get('email').invalid && paymentForm.get('email').touched">
         
         <div *ngIf="(paymentForm.get('email').invalid && paymentForm.get('email').touched) || paymentForm.get('email').dirty">
-            <small *ngIf="paymentForm.get('email').errors?.required" class="text-danger">O campo de email é obrigatório</small>
+            <small *ngIf="paymentForm.get('email').errors?.required" class="text-danger">O email é obrigatório</small>
             <small *ngIf="paymentForm.get('email').errors?.pattern" class="text-danger">Insira um email válido</small>
         </div>
            
@@ -42,7 +42,7 @@
                [class.is-invalid] = "paymentForm.get('adress').invalid && paymentForm.get('adress').touched">
 
         <div *ngIf="(paymentForm.get('adress').invalid && paymentForm.get('adress').touched) || paymentForm.get('adress').dirty">
-            <small *ngIf="paymentForm.get('adress').errors?.required" class="text-danger">O campo de endereço é obrigatório</small>
+            <small *ngIf="paymentForm.get('adress').errors?.required" class="text-danger">O endereço é obrigatório</small>
             <small *ngIf="paymentForm.get('adress').errors?.minlength" class="text-danger">O endereço deve conter no mínimo 10 letras</small>
         </div>
 

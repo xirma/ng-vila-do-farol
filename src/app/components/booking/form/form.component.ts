@@ -21,10 +21,10 @@ export class FormComponent implements OnInit {
 
   Children: string[] = ['Sem crianças', '1 Criança', '2 Crianças', '3 Crianças', '4 Crianças', '5 Crianças', '6 Crianças'];
 
-  minCheckOutDate = new BehaviorSubject('');
-  sharedMinCheckOutDate = this.minCheckOutDate.asObservable();
-  minCheckOut: string;
+  startDateValue: string = null;
+  endDateValue: string = null;
 
+  minCheckOut: string;
   today: string;
 
   form: FormGroup = this.fb.group ({
@@ -38,9 +38,15 @@ export class FormComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.today = this.getToday();
-    this.sharedMinCheckOutDate.subscribe(date => this.minCheckOut = date);
+    this.today = this.service.getToday();
+
+    this.service.sharedMinCheckOutDate.subscribe(date => this.minCheckOut = date);
     this.sharedAdults.subscribe(adults => this.Adults = adults);
+    this.service.sharedStartDateValue.subscribe(date => this.startDateValue = date);
+    this.service.sharedEndDateValue.subscribe(date => this.endDateValue = date);
+
+    console.log(this.startDateValue);
+    console.log(this.endDateValue);
   }
 
   constructor(
@@ -63,55 +69,16 @@ export class FormComponent implements OnInit {
     });
   }
 
+  checkOutSetter(e) {
+    this.service.setMinCheckOutDate(e.target.value);
+  }
+
   changeChildren(e): void {
     this.form.get('numberChildren').setValue(e.target.value, {
       onlySelf: true
     });
   }
 
-  setMinCheckOutDate(e): void {
-    const day = 87264000;
-
-    const checkInDate = e.target.value;
-    const ciDate = new Date (checkInDate);
-    const ciTime = ciDate.getTime();
-
-    const minCheckOutTime = ciTime + day;
-    const minCheckOutDate = new Date(minCheckOutTime);
-
-    let dd: any = minCheckOutDate.getDate();
-    let mm: any = minCheckOutDate.getMonth() + 1;
-    const yyyy = minCheckOutDate.getFullYear();
-
-    if (dd < 10) {
-      dd = `0${dd}`;
-    }
-
-    if (mm < 10) {
-      mm = `0${mm}`;
-    }
-
-    const minCheckOut = `${yyyy}-${mm}-${dd}`;
-
-    this.minCheckOutDate.next(minCheckOut);
-  }
-
-  getToday(): string{
-    let today: any = new Date();
-    let dd: any = today.getDate();
-    let mm: any = today.getMonth() + 1;
-    const yyyy = today.getFullYear();
-
-    if (dd < 10){
-      dd = `0${dd}`;
-    }
-
-    if (mm < 10) {
-      mm = `0${mm}`;
-    }
-
-    return today = `${yyyy}-${mm}-${dd}`;
-  }
 
   adultsFilter(roomType: string): void {
     switch (roomType) {
