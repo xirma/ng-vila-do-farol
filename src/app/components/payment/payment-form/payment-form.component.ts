@@ -32,20 +32,22 @@ export class PaymentFormComponent implements OnInit {
   // });
 
   paymentForm: FormGroup = this.fb.group ({
-    
-      creditCard: [null],
-      cardName: [null, Validators.minLength(10)],
-      expireDate: [null],
-      cvv: [null, [ Validators.minLength(3), Validators.maxLength(3) ]],
-    
-    
-      fullName: [null, Validators.minLength(10)],
-      email: [null, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')],
-      adress: [null, Validators.minLength(5)],
-      city: [null],
-      postalCode: [null],
-      country: [null]
-    
+    creditCard: [null],
+    cardName: [null],
+    expireDate: [null],
+    cvv: [null],
+
+    fullName: [null, [Validators.minLength(10), Validators.required]],
+    email: [null,
+      [Validators.pattern
+      (/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
+      Validators.required]
+    ],
+    adress: [null, [Validators.required, Validators.minLength(10)]],
+    city: [null],
+    postalCode: [null, [Validators.pattern(/\d{5}[\-]?\d{3}/), Validators.required]],
+    country: [null]
+
   });
 
 

@@ -1,7 +1,5 @@
 <form [formGroup]="paymentForm" (submit)="submit()">
 
-    <!-- <label class="group" for="creditCardInfo">Informações do Cartão de crédito</label>
-    <div name="creditCardInfo" formGroupName="creditCardInfo"> -->
         <h3>Número do Cartão de Crédito</h3>
         <input id="ccn" type="tel" name="creditCard" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" formControlName="creditCard">
 
@@ -13,18 +11,40 @@
 
         <h3>CVV</h3>
         <input name="cvv" type="number" maxlength="3" placeholder="CVV">
-    <!-- </div> -->
-
-    <!-- <label  class="group" for="billingInfo">Informações de faturamento</label>
-    <div name="billingInfo" formGroupName="billingInfo"> -->
+    
         <h3>Nome Completo</h3>
-        <input type="text" name="fullName" formControlName="fullName" placeholder="nome completo">
+        <input type="text" name="fullName" 
+               formControlName="fullName" 
+               placeholder="nome completo" 
+               [class.is-invalid] = "paymentForm.get('fullName').invalid && paymentForm.get('fullName').touched">
 
-        <h3>E-mail</h3>
-        <input type="email" formControlName="email">
+        <div *ngIf="(paymentForm.get('fullName').invalid && paymentForm.get('fullName').touched) || paymentForm.get('fullName').dirty">
+            <small *ngIf="paymentForm.get('fullName').errors?.required" class="text-danger">O nome completo é obrigatório</small>
+            <small *ngIf="paymentForm.get('fullName').errors?.minlength" class="text-danger">O nome deve conter no mínimo 10 letras</small>
+        </div>       
 
+        <h3>Email</h3>
+            <input type="email"
+                   formControlName="email" 
+                   placeholder="endereço de email"
+                   [class.is-invalid] = "paymentForm.get('email').invalid && paymentForm.get('email').touched">
+        
+        <div *ngIf="(paymentForm.get('email').invalid && paymentForm.get('email').touched) || paymentForm.get('email').dirty">
+            <small *ngIf="paymentForm.get('email').errors?.required" class="text-danger">O campo de email é obrigatório</small>
+            <small *ngIf="paymentForm.get('email').errors?.pattern" class="text-danger">Insira um email válido</small>
+        </div>
+           
         <h3>Endereço</h3>
-        <input type="text" name="adress" formControlName="adress" placeholder="endereço de faturamento">
+        <input type="text"
+               name="adress" 
+               formControlName="adress" 
+               placeholder="endereço de faturamento"
+               [class.is-invalid] = "paymentForm.get('adress').invalid && paymentForm.get('adress').touched">
+
+        <div *ngIf="(paymentForm.get('adress').invalid && paymentForm.get('adress').touched) || paymentForm.get('adress').dirty">
+            <small *ngIf="paymentForm.get('adress').errors?.required" class="text-danger">O campo de endereço é obrigatório</small>
+            <small *ngIf="paymentForm.get('adress').errors?.minlength" class="text-danger">O endereço deve conter no mínimo 10 letras</small>
+        </div>
 
         <h3>Cidade</h3>
         <select name="city" id="children" formControlName="city" (change)="changeCity($event)">
@@ -33,16 +53,25 @@
         </select>
 
         <h3>Código Postal</h3>
-        <input type="text" OnlyNumber id="number" name="postalCode" placeholder="Insira o código postal" formControlName="postalCode" maxlength="6" class="a-textbox" />  
+        <input type="text"
+               id="number" 
+               name="postalCode" 
+               placeholder="Insira o código postal" 
+               formControlName="postalCode" 
+               [class.is-invalid] = "paymentForm.get('postalCode').invalid && paymentForm.get('postalCode').touched"/>  
+        <div *ngIf="(paymentForm.get('postalCode').invalid && paymentForm.get('postalCode').touched) || paymentForm.get('postalCode').dirty">
+            <small *ngIf="paymentForm.get('postalCode').errors?.required" class="text-danger">O código postal é obrigatório</small>
+            <small *ngIf="paymentForm.get('postalCode').errors?.pattern" class="text-danger">Insira um código válido xxxxx-xxx</small>
+        </div>
+        
 
         <h3>País</h3>
         <select name="country" id="contry" formControlName="country" (change)="changeCountry($event)">
             <option value="" disabled>Escolha uma opção</option>
             <option *ngFor="let country of Countries" [value]="country">{{country}}</option>
         </select>
-    <!-- </div> -->
 
-    <button type="submit">Submeter</button>
+    <button type="submit" [disabled]="!paymentForm.valid">Submeter</button>
 </form>
 
 
