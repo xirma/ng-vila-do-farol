@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { buildEventRangeKey } from '@fullcalendar/angular';
 import { BehaviorSubject } from 'rxjs';
 import { MainService } from 'src/app/main.service';
 
@@ -17,9 +16,11 @@ export class FormComponent implements OnInit {
 
   adults = new BehaviorSubject([]);
   sharedAdults = this.adults.asObservable();
-  Adults: string[];
+  Adults;
 
-  Children: string[] = ['Sem crianças', '1 Criança', '2 Crianças', '3 Crianças', '4 Crianças', '5 Crianças', '6 Crianças'];
+  children = new BehaviorSubject([]);
+  sharedChildren = this.children.asObservable();
+  Children;
 
   startDateValue: string = null;
   endDateValue: string = null;
@@ -28,8 +29,8 @@ export class FormComponent implements OnInit {
   today: string;
 
   form: FormGroup = this.fb.group ({
-    checkIn: [null, Validators.required],
-    checkOut: [ null, Validators.required],
+    checkIn: [this.startDateValue, Validators.required],
+    checkOut: [this.endDateValue, Validators.required],
     roomType: [null, Validators.required],
     numberAdults: [null, Validators.required] ,
     numberChildren: [null, Validators.required],
@@ -40,10 +41,12 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.today = this.service.getToday();
 
-    this.service.sharedMinCheckOutDate.subscribe(date => this.minCheckOut = date);
     this.sharedAdults.subscribe(adults => this.Adults = adults);
+    this.sharedChildren.subscribe(children => this.Children = children);
+
+    this.service.sharedMinCheckOutDate.subscribe(date => this.minCheckOut = date);
     this.service.sharedStartDateValue.subscribe(date => this.startDateValue = date);
-    this.service.sharedEndDateValue.subscribe(date => this.endDateValue = date);
+    this.service.sharedEndDateValue.subscribe(date => this.endDateValue = date );
 
     console.log(this.startDateValue);
     console.log(this.endDateValue);
@@ -61,6 +64,7 @@ export class FormComponent implements OnInit {
     });
 
     this.adultsFilter(e.target.value);
+    this.childrenFilter(e.target.value);
   }
 
   changeAdults(e): void {
@@ -69,7 +73,7 @@ export class FormComponent implements OnInit {
     });
   }
 
-  checkOutSetter(e) {
+  checkOutSetter(e): void {
     this.service.setMinCheckOutDate(e.target.value);
   }
 
@@ -97,8 +101,26 @@ export class FormComponent implements OnInit {
     }
   }
 
+  childrenFilter(roomType: string): void {
+    switch (roomType) {
+      case 'Apartamento 1 Quarto':
+        this.children.next(['Sem crianças', '1 Criança']);
+        break;
+      case 'Apartamento 2 Quartos':
+        this.children.next(['Sem crianças', '1 Criança', '2 Crianças']);
+        break;
+      case 'Apartamento 3 Quartos':
+        this.children.next(['Sem crianças', '1 Criança', '2 Crianças', '3 Crianças', '4 Crianças']);
+        break;
+      case 'Apartamento Adaptado':
+        this.children.next(['Sem crianças', '1 Criança']);
+        break;
+    }
+  }
+
   submit(): boolean {
     const Form = this.form.value;
+    console.log(Form);
     const {checkIn, checkOut, roomType, numberAdults, numberChildren, oceanView, breakfast } = this.form.value;
 
     this.service.setForm(Form);
