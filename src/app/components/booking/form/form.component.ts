@@ -45,20 +45,22 @@ export class FormComponent implements OnInit {
     this.sharedChildren.subscribe(children => this.Children = children);
 
     this.service.sharedMinCheckOutDate.subscribe(date => this.minCheckOut = date);
-    this.service.sharedStartDateValue.subscribe(date => this.startDateValue = date);
-    this.service.sharedEndDateValue.subscribe(date => this.endDateValue = date );
+    this.service.sharedStartDateValue.subscribe(date => {this.startDateValue = date;
+                                                         this.form.get('checkIn').setValue(date)});
+    this.service.sharedEndDateValue.subscribe(date => {this.endDateValue = date;
+                                                       this.form.get('checkOut').setValue(date)});
 
     console.log(this.startDateValue);
     console.log(this.endDateValue);
   }
 
-  constructor(
+constructor(
     public fb: FormBuilder,
     private service: MainService,
     private router: Router
   ) {}
 
-  changeRooms(e): void {
+changeRooms(e): void {
     this.form.get('roomType').setValue(e.target.value, {
       onlySelf: true
     });
@@ -67,24 +69,24 @@ export class FormComponent implements OnInit {
     this.childrenFilter(e.target.value);
   }
 
-  changeAdults(e): void {
+changeAdults(e): void {
     this.form.get('numberAdults').setValue(e.target.value, {
       onlySelf: true
     });
   }
 
-  checkOutSetter(e): void {
+checkOutSetter(e): void {
     this.service.setMinCheckOutDate(e.target.value);
   }
 
-  changeChildren(e): void {
+changeChildren(e): void {
     this.form.get('numberChildren').setValue(e.target.value, {
       onlySelf: true
     });
   }
 
 
-  adultsFilter(roomType: string): void {
+adultsFilter(roomType: string): void {
     switch (roomType) {
       case 'Apartamento 1 Quarto':
         this.adults.next(['1 Adulto', '2 Adultos']);
@@ -101,7 +103,7 @@ export class FormComponent implements OnInit {
     }
   }
 
-  childrenFilter(roomType: string): void {
+childrenFilter(roomType: string): void {
     switch (roomType) {
       case 'Apartamento 1 Quarto':
         this.children.next(['Sem crianças', '1 Criança']);
@@ -118,7 +120,7 @@ export class FormComponent implements OnInit {
     }
   }
 
-  submit(): boolean {
+submit(): boolean {
     const Form = this.form.value;
     console.log(Form);
     const {checkIn, checkOut, roomType, numberAdults, numberChildren, oceanView, breakfast } = this.form.value;
