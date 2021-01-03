@@ -23,7 +23,6 @@ export class DetailsComponent implements OnInit {
     this.service.sharedPaymentForm.subscribe(paymentForm => this.paymentForm = paymentForm);
     this.name = this.paymentForm['fullName'];
     this.email = this.paymentForm['email'];
-
   }
 
 }

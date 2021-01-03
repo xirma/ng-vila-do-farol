@@ -10,14 +10,10 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: []
 })
-export class Quarto1ContainerComponent implements OnInit {
+export class Quarto1ContainerComponent{
 
   title = 'Apartamento 1 Quarto';
   src = 'assets/Img/quarto-1.jpg';
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -15,12 +15,8 @@ import { Component, OnInit } from '@angular/core';
       flex-direction: row;}
   `]
 })
-export class BookingFormContainerComponent implements OnInit {
+export class BookingFormContainerComponent{
 
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

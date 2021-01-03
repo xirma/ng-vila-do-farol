@@ -19,7 +19,7 @@ import { MainService } from 'src/app/main.service';
   ]
 })
 
-export class SliderComponent implements OnInit {
+export class SliderComponent{
 
   slides;
 
@@ -40,8 +40,4 @@ export class SliderComponent implements OnInit {
     const next = this.currentSlide + 1;
     this.currentSlide = next === this.slides.length ? 0 : next;
   }
-
-  ngOnInit(): void {
-  }
-
 }

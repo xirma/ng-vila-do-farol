@@ -40,7 +40,8 @@ export class CalendarComponent implements OnInit {
 
   selectHandler(date): void {
     this.service.startDateValue.next(date.startStr);
-    this.service.endDateValue.next(date.endStr);
-  }
 
+    const endDate = this.service.endDateHandler(date.endStr);
+    this.service.endDateValue.next(endDate);
+  }
 }

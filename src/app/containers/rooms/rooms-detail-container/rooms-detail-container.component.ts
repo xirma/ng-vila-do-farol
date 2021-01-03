@@ -8,11 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class RoomsDetailContainerComponent implements OnInit {
+export class RoomsDetailContainerComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

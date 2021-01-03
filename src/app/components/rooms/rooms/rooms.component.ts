@@ -8,14 +8,11 @@ import { Router } from '@angular/router';
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss']
 })
-export class RoomsComponent implements OnInit {
+export class RoomsComponent {
 
   constructor(
     private router: Router
   ) { }
-
-  ngOnInit(): void {
-  }
 
   firstRoute(): void {
     this.router.navigate(['/acomodacoes/quarto-1']);

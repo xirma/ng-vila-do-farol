@@ -8,11 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class BookingContainerComponent implements OnInit {
+export class BookingContainerComponent{
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

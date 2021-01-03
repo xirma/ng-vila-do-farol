@@ -59,6 +59,32 @@ export class MainService {
     return today = `${yyyy}-${mm}-${dd}`;
   }
 
+  endDateHandler(date: string): string{
+    const day = 86000000;
+    const entryValue = new Date (date);
+    const entryValueTime = entryValue.getTime();
+
+    const lessOneDay = entryValueTime - day;
+
+    const endDate = new Date(lessOneDay);
+
+    let dd: any = endDate.getDate();
+    let mm: any = endDate.getMonth() + 1;
+    const yyyy = endDate.getFullYear();
+
+    if (dd < 10) {
+      dd = `0${dd}`;
+    }
+
+    if (mm < 10) {
+      mm = `0${mm}`;
+    }
+
+    const endDateString = `${yyyy}-${mm}-${dd}`;
+
+    return endDateString;
+  }
+
   setMinCheckOutDate(checkInDate): void {
     const day = 87264000;
 

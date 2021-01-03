@@ -14,11 +14,8 @@ import { Component, OnInit } from '@angular/core';
       flex-direction: row;}
   `]
 })
-export class PaymentFormContainerComponent implements OnInit {
+export class PaymentFormContainerComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

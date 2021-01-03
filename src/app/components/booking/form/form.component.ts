@@ -122,7 +122,6 @@ childrenFilter(roomType: string): void {
 
 submit(): boolean {
     const Form = this.form.value;
-    console.log(Form);
     const {checkIn, checkOut, roomType, numberAdults, numberChildren, oceanView, breakfast } = this.form.value;
 
     this.service.setForm(Form);

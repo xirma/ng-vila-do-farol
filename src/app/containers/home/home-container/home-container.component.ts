@@ -11,11 +11,7 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class HomeContainerComponent implements OnInit {
+export class HomeContainerComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
