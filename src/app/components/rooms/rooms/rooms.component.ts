@@ -14,23 +14,23 @@ export class RoomsComponent {
     private router: Router
   ) { }
 
-  firstRoute(): void {
+  quartoUmRoute(): void {
     this.router.navigate(['/acomodacoes/quarto-1']);
   }
 
-  secondRoute(): void {
+  quartoDoisRoute(): void {
     this.router.navigate(['/acomodacoes/quarto-2']);
   }
 
-  thirdRoute(): void {
+  quartoTresRoute(): void {
     this.router.navigate(['/acomodacoes/quarto-3']);
   }
 
-  fourthRoute(): void{
+  quartoAdpRoute(): void{
     this.router.navigate(['/acomodacoes/quarto-adp']);
   }
 
-  fithRoute(): void {
+  reservasRoute(): void {
     this.router.navigate(['/reservas']);
   }
 }
