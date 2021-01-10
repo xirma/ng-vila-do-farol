@@ -23,6 +23,7 @@
     "@fullcalendar/daygrid": "^5.5.0",
     "@fullcalendar/interaction": "^5.5.0",
     "@syncfusion/ej2-angular-calendars": "^18.3.48",
+    "angular-cc-library": "^2.0.1",
     "angular-cleave": "^1.0.5",
     "cleave.js": "^1.6.0",
     "rxjs": "~6.6.0",

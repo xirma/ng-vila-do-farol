@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FullCalendarModule } from '@fullcalendar/angular';
 
 import { BookingRoutingModule } from '../routes/booking-routing.module';
 
@@ -18,6 +17,10 @@ import { BookingDetailsComponent } from 'src/app/components/payment/booking-deta
 import { BookingConfirmContainerComponent } from '../containers/booking/booking-confirm-container/booking-confirm-container.component';
 import { DetailsComponent } from 'src/app/components/booking-confirm/details/details.component';
 import { HotelSliderComponent } from 'src/app/components/booking-confirm/hotel-slider/hotel-slider.component';
+
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { CreditCardDirectivesModule } from 'angular-cc-library';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +39,8 @@ import { HotelSliderComponent } from 'src/app/components/booking-confirm/hotel-s
     CommonModule,
     BookingRoutingModule,
     ReactiveFormsModule,
-    FullCalendarModule
+    FullCalendarModule,
+    CreditCardDirectivesModule
   ]
 })
 export class BookingModule { }

@@ -22,8 +22,6 @@ export class MainService {
   public total = new BehaviorSubject({});
   public sharedTotal = this.total.asObservable();
 
-  public nights: number;
-
   public minCheckOutDate = new BehaviorSubject('');
   public sharedMinCheckOutDate = this.minCheckOutDate.asObservable();
 
@@ -122,7 +120,6 @@ export class MainService {
 
     const nights =  (timeCO - timeCI) / 1000 / 60 / 60 / 24 ;
 
-    console.log(nights);
     this.setTotal(nights);
   }
 

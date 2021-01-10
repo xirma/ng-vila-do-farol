@@ -1,16 +1,59 @@
 <form [formGroup]="paymentForm" (submit)="submit()">
 
         <h3>Número do Cartão de Crédito</h3>
-        <input id="ccn" type="tel" name="creditCard" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" formControlName="creditCard">
+        <span class="scheme">{{ccNumber.resolvedScheme$ | async}}</span><br>
+        <input  type="tel"
+                formControlName="creditCard"
+                ccNumber #ccNumber="ccNumber"  
+                placeholder="•••• •••• •••• ••••"
+                [class.is-invalid]="paymentForm.get('creditCard').invalid && paymentForm.get('creditCard').touched">
+
+        <div *ngIf="(paymentForm.get('creditCard').invalid && paymentForm.get('creditCard').touched) || paymentForm.get('creditCard').dirty">
+            <small *ngIf="paymentForm.get('creditCard').errors?.required" class="text-danger">O número do cartão é obrigatório</small>
+            <small *ngIf="!paymentForm.controls.creditCard.valid && paymentForm.controls.creditCard.dirty" class="text-danger">Número inválido</small>
+        </div>
 
         <h3>Nome impresso no cartão</h3>
-        <input name ="cardName" type="text" formControlName="cardName" placeholder="titular do cartão">
+        <input  name ="cardName" 
+                type="text" 
+                formControlName="cardName" 
+                placeholder="titular do cartão"
+                [class.is-invalid]="paymentForm.get('cardName').invalid && paymentForm.get('cardName').touched">
+
+        <div *ngIf="(paymentForm.get('cardName').invalid && paymentForm.get('cardName').touched) || paymentForm.get('cardName').dirty">
+            <small *ngIf="paymentForm.get('cardName').errors?.required" class="text-danger">O nome é obrigatório</small>
+        </div>
 
         <h3>Data de Validade</h3>
-        <input name="expireDate" type="date" formControlName="expireDate">
+        <input  id="cc-exp-date" 
+                formControlName="expireDate" 
+                type="tel" 
+                autocomplete="cc-exp" 
+                placeholder="•• / ••"
+                ccExp
+                [class.is-invalid]="paymentForm.get('expireDate').invalid && paymentForm.get('expireDate').touched">
+
+        <div *ngIf="(paymentForm.get('expireDate').invalid && paymentForm.get('expireDate').touched) || paymentForm.get('expireDate').dirty">
+            <small *ngIf="paymentForm.get('expireDate').errors?.required" class="text-danger">A data de validade é obrigatória</small>
+            <small *ngIf="!paymentForm.controls.expireDate.valid && paymentForm.controls.expireDate.dirty" class="text-danger">Data Inválida</small>
+        </div>
 
         <h3>CVV</h3>
-        <input name="cvv" type="number" maxlength="3" placeholder="CVV">
+        <input  id="cc-cvc"
+                formControlName="cvv"
+                type="tel" 
+                autocomplete="off" a
+                placeholder="•••"
+                min="3"
+                max="4"
+                ccCvc
+                [class.is-invalid]="paymentForm.get('cvv').invalid && paymentForm.get('cvv').touched">
+
+        <div *ngIf="(paymentForm.get('cvv').invalid && paymentForm.get('cvv').touched) || paymentForm.get('cvv').dirty">
+            <small *ngIf="paymentForm.get('cvv').errors?.required" class="text-danger">O CVV é obrigatório</small>
+            <small *ngIf="paymentForm.get('cvv').errors?.minlength" class="text-danger">Mínimo 3 números</small>
+            <small *ngIf="paymentForm.get('cvv').errors?.maxlength" class="text-danger">Máximo 4 números</small>
+        </div>
     
         <h3>Nome Completo</h3>
         <input type="text" name="fullName" 
@@ -31,15 +74,15 @@
         
         <div *ngIf="(paymentForm.get('email').invalid && paymentForm.get('email').touched) || paymentForm.get('email').dirty">
             <small *ngIf="paymentForm.get('email').errors?.required" class="text-danger">O email é obrigatório</small>
-            <small *ngIf="paymentForm.get('email').errors?.pattern" class="text-danger">Insira um email válido</small>
+            <small *ngIf="paymentForm.get('email').errors?.pattern" class="text-danger">Email inválido</small>
         </div>
            
         <h3>Endereço</h3>
-        <input type="text"
-               name="adress" 
-               formControlName="adress" 
-               placeholder="endereço de faturamento"
-               [class.is-invalid] = "paymentForm.get('adress').invalid && paymentForm.get('adress').touched">
+        <input  type="text"
+                name="adress" 
+                formControlName="adress" 
+                placeholder="endereço de faturamento"
+                [class.is-invalid] = "paymentForm.get('adress').invalid && paymentForm.get('adress').touched">
 
         <div *ngIf="(paymentForm.get('adress').invalid && paymentForm.get('adress').touched) || paymentForm.get('adress').dirty">
             <small *ngIf="paymentForm.get('adress').errors?.required" class="text-danger">O endereço é obrigatório</small>
@@ -47,26 +90,34 @@
         </div>
 
         <h3>Cidade</h3>
-        <select name="city" id="children" formControlName="city" (change)="changeCity($event)">
+        <select name="city" 
+                id="children" 
+                formControlName="city" 
+                (change)="changeCity($event)">
             <option value="" disabled>Escolha uma opção</option>
             <option *ngFor="let city of Cities" [value]="city">{{city}}</option>
         </select>
 
         <h3>Código Postal</h3>
-        <input type="text"
-               id="number" 
-               name="postalCode" 
-               placeholder="Insira o código postal" 
-               formControlName="postalCode" 
-               [class.is-invalid] = "paymentForm.get('postalCode').invalid && paymentForm.get('postalCode').touched"/>  
+        <input  type="text"
+                id="number" 
+                name="postalCode" 
+                placeholder="Insira o código postal" 
+                formControlName="postalCode" 
+                placeholder="xxxx-xxx"
+                [class.is-invalid] = "paymentForm.get('postalCode').invalid && paymentForm.get('postalCode').touched"/>  
         <div *ngIf="(paymentForm.get('postalCode').invalid && paymentForm.get('postalCode').touched) || paymentForm.get('postalCode').dirty">
             <small *ngIf="paymentForm.get('postalCode').errors?.required" class="text-danger">O código postal é obrigatório</small>
             <small *ngIf="paymentForm.get('postalCode').errors?.pattern" class="text-danger">Insira um código válido xxxxx-xxx</small>
         </div>
         
+        
 
         <h3>País</h3>
-        <select name="country" id="contry" formControlName="country" (change)="changeCountry($event)">
+        <select name="country" 
+                id="contry" 
+                formControlName="country" 
+                (change)="changeCountry($event)">
             <option value="" disabled>Escolha uma opção</option>
             <option *ngFor="let country of Countries" [value]="country">{{country}}</option>
         </select>
