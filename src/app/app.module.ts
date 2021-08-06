@@ -8,8 +8,8 @@ import { NavBarComponent } from './components/general/nav-bar/nav-bar.component'
 import { FooterComponent } from './components/general/footer/footer.component';
 
 import { AppRoutingModule } from 'src/app/routes/app-routing.module';
-import { HomeModule } from './modules/home.module';
-import { RoomsModule } from './modules/rooms.module';
+import { HomeModule } from './modules/home-module/home.module';
+import { RoomsModule } from './modules/rooms-module/rooms.module';
 
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
