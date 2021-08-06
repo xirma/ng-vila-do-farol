@@ -49,9 +49,6 @@ export class FormComponent implements OnInit {
                                                          this.form.get('checkIn').setValue(date)});
     this.service.sharedEndDateValue.subscribe(date => {this.endDateValue = date;
                                                        this.form.get('checkOut').setValue(date)});
-
-    console.log(this.startDateValue);
-    console.log(this.endDateValue);
   }
 
 constructor(

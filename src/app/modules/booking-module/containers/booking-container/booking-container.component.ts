@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-booking-container',
   template: `
@@ -8,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class BookingContainerComponent{
+export class BookingContainerComponent {
 
-  constructor() { }
+  constructor() {}
 
 }

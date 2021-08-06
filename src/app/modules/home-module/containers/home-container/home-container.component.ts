@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/app/main.service';
 
 @Component({
   selector: 'app-home-container',
@@ -11,7 +12,15 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class HomeContainerComponent {
+export class HomeContainerComponent implements OnInit {
 
-  constructor() { }
+  module = 'Home';
+
+  constructor(
+    private service: MainService
+  ) { }
+
+  ngOnInit(): void {
+    this.service.setCurrentModule(this.module);
+  }
 }

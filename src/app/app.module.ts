@@ -4,8 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './components/general/nav-bar/nav-bar.component';
-import { FooterComponent } from './components/general/footer/footer.component';
+import { NavBarComponent } from 'src/app/components/nav-bar/nav-bar.component';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 import { AppRoutingModule } from 'src/app/routes/app-routing.module';
 import { HomeModule } from './modules/home-module/home.module';

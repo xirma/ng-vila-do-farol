@@ -12,7 +12,10 @@ export class MainService {
     {src : 'assets/Img/vila-do-farol-63.jpg'}
   ];
 
+  // VARIABLES
+ 
 
+  // OBSERVABLES
   public form = new BehaviorSubject({});
   public sharedForm = this.form.asObservable();
 
@@ -31,13 +34,21 @@ export class MainService {
   public endDateValue = new BehaviorSubject('');
   public sharedEndDateValue = this.endDateValue.asObservable();
 
+  public currentModule = new BehaviorSubject('');
+  public sharedCurrentModule = this.currentModule.asObservable();
+
+  // FUNCTIONS
   setForm(form): void  {
     this.form.next(form);
   }
 
-
   setPaymentForm(paymentForm): void {
     this.paymentForm.next(paymentForm);
+  }
+
+  setCurrentModule(module):void {
+    this.currentModule.next(module);
+    console.log(this.currentModule);
   }
 
   getToday(): string{
@@ -182,7 +193,6 @@ export class MainService {
 
       case '6 Criança': childrenPrice = 900; children = 6; break;
     }
-
 
     if (breakfast) {
       breakfastPrice = 50;

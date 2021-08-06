@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/app/main.service';
 
 
 @Component({
@@ -15,8 +16,14 @@ import { Component, OnInit } from '@angular/core';
       flex-direction: row;}
   `]
 })
-export class BookingFormContainerComponent{
+export class BookingFormContainerComponent implements OnInit{
 
+  module = 'Reservas';
 
-  constructor() { }
+  constructor( private service: MainService ) {}
+
+  ngOnInit (): void {
+    this.service.setCurrentModule(this.module);
+  }
+
 }
